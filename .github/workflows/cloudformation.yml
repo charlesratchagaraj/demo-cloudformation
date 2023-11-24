@@ -4,10 +4,10 @@
 name: .NET
 
 on:
-  # push:
-  #  branches: [ "main" ]
-  # pull_request:
-  #  branches: [ "main" ]
+   push:
+    branches: [ "main" ]
+   pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -31,6 +31,9 @@ jobs:
       run: zip -qq -r ../lambdacharles.zip .
       working-directory: artifact/publish
 
+    - name : copy the deployment yaml file
+      run: cp ./demo-cloudformation/deployment.yaml ./artifact/deployment.yaml
+
     - uses: actions/upload-artifact@v3
       with:
         name: lambdacharles
@@ -42,4 +45,8 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-2
+
+    - name : upload to S3
+      run: aws s3 cp ./artifact/publish/lambdacharles.zip s3://youtube-demo-cloudformation-packages-charles
+
       
