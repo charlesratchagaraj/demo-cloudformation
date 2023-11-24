@@ -33,7 +33,7 @@ jobs:
 
 
     - name : Copy Deployment YAML
-      run: cp C:\Charles\SimpleProjects\demo-cloudformation\deployment.yaml ./artifact/deployment.yaml
+      run: cp "C:\Charles\SimpleProjects\demo-cloudformation\deployment.yaml" ./artifact/deployment.yaml
 
     - uses: actions/upload-artifact@v3
       with:
