@@ -20,9 +20,8 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
-
     - name: Publish
-      run: dotnet publish --no-restore --no-self-contained --runtime linux-x64 --configuration Release --output ./artifact/publish ./demo-cloudformation/src/demo-cloudformation/demo-cloudformation.csproj  
+      run: dotnet publish --no-restore --no-self-contained --runtime linux-x64 --configuration Release --output ./artifact/publish ./demo-cloudformation/src/demo-cloudformation/demo-cloudformation.csproj
 
     - name: Install zip
       uses: montudor/action-zip@v1
@@ -47,6 +46,6 @@ jobs:
         aws-region: us-east-2
 
     - name : upload to S3
-      run: aws s3 cp ./artifact/publish/lambdacharles.zip s3://youtube-demo-cloudformation-packages-charles
+      run: aws s3 cp ./artifact/lambdacharles.zip s3://youtube-demo-cloudformation-packages-charles
 
       
