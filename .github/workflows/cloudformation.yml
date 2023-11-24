@@ -22,7 +22,7 @@ jobs:
         dotnet-version: 6.0.x
     
     - name: Publish
-      run: dotnet publish --no-self-contained --runtime linux-x64 --configuration Release --output ./artifact/publish ./SimpleProjects/demo-cloudformation/src/demo-cloudformation/demo-cloudformation.csproj
+      run: dotnet publish --no-self-contained --runtime linux-x64 --configuration Release --output ./artifact/publish ./src/demo-cloudformation/demo-cloudformation.csproj
 
     - name: Install zip
       uses: montudor/action-zip@v1
@@ -31,8 +31,8 @@ jobs:
       run: zip -qq -r ../lambdacharles.zip .
       working-directory: artifact/publish
 
-    - name : copy the deployment yaml file
-      run: cp ./demo-cloudformation/deployment.yaml ./artifact/deployment.yaml
+    - name : Copy Deployment YAML
+      run: cp ./SimpleProjects/demo-cloudformation/deployment.yaml ./artifact/deployment.yaml
 
     - uses: actions/upload-artifact@v3
       with:
