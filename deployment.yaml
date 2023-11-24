@@ -1,13 +1,53 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: ---
-Metadata: 
+Description: "demo-cloudformation"
 
 Parameters: 
+  Environment:
+    Description: "Environment Name"
+    Type: String 
 
-Mappings: 
-
-Conditions: 
 
 Resources: 
+  iamlambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+    
+      Policies:
+        PolicyName: "demo-cloudformation-policy"
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: "Allow"
+              Action:
+                - logs:CreateLogGroup
+                - logs:CreateLogStream
+                - logs:PutLogEvents
+                - logs:DescribeLogStreams
+              Resource: "*"
 
-Outputs:
+  lambdaFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Description: "demo cloudformation lambda"
+      FunctionName: !Sub "demo-cloudformation-${Environment}"
+      Handler: demo-cloudformation::demo_cloudformation.Function::FunctionHandler
+      MemorySize: 128
+      Role: !GetAtt iamlambdaRole.Arn
+      Runtime: dotnet6
+      Timeout: 30
+      Environment:
+        Variables:
+          key1: value1 # A map of key-value pairs that the Lambda function can access
+      Code:
+        S3Bucket: "youtube-demo-cloudformation-packages-charles"
+        S3Key: "lambdacharles.zip"
+      Tags:
+        - Key: keyname
+          Value: value
