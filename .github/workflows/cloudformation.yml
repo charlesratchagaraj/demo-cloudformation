@@ -31,6 +31,7 @@ jobs:
       run: zip -qq -r ../lambdacharles.zip .
       working-directory: artifact/publish
 
+
     - name : Copy Deployment YAML
       run: cp C:/Charles/SimpleProjects/demo-cloudformation/deployment.yaml ./artifact/deployment.yaml
       working-directory: ./artifact
