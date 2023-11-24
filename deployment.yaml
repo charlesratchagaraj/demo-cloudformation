@@ -51,7 +51,7 @@ Resources:
                 Resource: !GetAtt sqsQueue.Arn
   
   
-    LamdaFunctionEventSourceMapping:
+    LambdaFunctionEventSourceMapping:
         Type: AWS::Lambda::EventSourceMapping
         Properties:
           BatchSize : 10
