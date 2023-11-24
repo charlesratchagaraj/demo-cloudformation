@@ -32,6 +32,7 @@ Resources:
                 - logs:DescribeLogStreams
               Resource: "*"
 
+
   lambdaFunction:
     Type: AWS::Lambda::Function
     Properties:
