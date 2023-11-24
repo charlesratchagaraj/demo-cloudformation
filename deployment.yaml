@@ -20,8 +20,8 @@ Resources:
             Action: sts:AssumeRole
     
       Policies:
-        PolicyName: "demo-cloudformation-policy"
-        PolicyDocument:
+        - PolicyName: "demo-cloudformation-policy"
+          PolicyDocument:
           Version: "2012-10-17"
           Statement:
             - Effect: "Allow"
