@@ -33,7 +33,7 @@ jobs:
 
 
     - name : Copy Deployment YAML
-      run: cp ./SimpleProjects/demo-cloudformation/deployment.yaml ./artifact/publish/deployment.yaml
+      run: cp ./deployment.yaml ./artifact/deployment.yaml
       working-directory: ./artifact
 
     - uses: actions/upload-artifact@v3
