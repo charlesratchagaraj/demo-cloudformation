@@ -3,7 +3,7 @@ Description: "demo-cloudformation"
 
 Parameters: 
   Environment:
-    Description: "Environment Name"
+    Description: Environment Name
     Type: String 
 
 
