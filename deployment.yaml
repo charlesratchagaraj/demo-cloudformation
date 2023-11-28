@@ -13,10 +13,10 @@ Resources:
     Properties:
       QueueName: !Sub "demo-cloudformation-Queue-${Environment}"
 
-  s3Bucket:
-    Type: AWS::S3::Bucket
-    Properties: 
-      BucketName: !Sub "youtube-demo-cloudformation-packages-charles-${Environment}"
+  #s3Bucket:
+  #  Type: AWS::S3::Bucket
+  #  Properties: 
+  #    BucketName: !Sub "youtube-demo-cloudformation-packages-charles-${Environment}"
 
 
   iamlambdaRole:
@@ -69,7 +69,7 @@ Resources:
         Variables:
           key1: value1 # A map of key-value pairs that the Lambda function can access
       Code:
-        S3Bucket: !Ref s3Bucket
+        S3Bucket: "youtube-demo-cloudformation-packages-charles"
         S3Key: "lambdacharles.zip"
       Tags:
         - Key: keyname
