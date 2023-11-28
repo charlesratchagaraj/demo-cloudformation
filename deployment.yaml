@@ -75,7 +75,6 @@ Resources:
         - Key: keyname
           Value: value
   
-
   LambdaFunctionEventSourceMapping:
     Type: AWS::Lambda::EventSourceMapping
     Properties:
