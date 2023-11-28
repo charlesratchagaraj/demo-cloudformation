@@ -22,8 +22,6 @@ Resources:
         ServerSideEncryptionConfiguration:
           - ServerSideEncryptionByDefault:
               SSEAlgorithm: AES256
-      LoggingConfiguration:
-        DestinationBucketName: !Ref AccessLogBucket
 
   #s3Bucket:
   #  Type: AWS::S3::Bucket
