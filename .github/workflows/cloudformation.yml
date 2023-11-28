@@ -50,7 +50,7 @@ jobs:
    
   test-deploy:
     runs-on: ubuntu-latest
-    environment: Test
+    environment: test
     needs: build
 
     steps:
@@ -71,7 +71,7 @@ jobs:
         with:
           name: demo-cloudformation
           template: artifact/deployment.yaml
-          parameter-overrides: "Environment=-Test"
+          parameter-overrides: "Environment=-test"
           no-fail-on-empty-changeset: "1"
 
   prod-deploy:
